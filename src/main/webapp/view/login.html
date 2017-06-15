@@ -1,0 +1,16 @@
+<div class="coffee-login-form">
+    <form>
+        <section class="form-group">
+            <label for="username">用户名：</label>
+            <input name="username" placeholder="请输入用户名称" id="username" type="text" class="form-control" ng-model="userCtrl.userInfo.username">
+        </section>
+        <section>
+            <label for="password" class="form-group">密码：</label>
+            <input name="password" placeholder="请输密码" id="password" type="password" class="form-control" ng-model="userCtrl.userInfo.password">
+        </section>
+        <section class="coffee-login-btn-section">
+            <button  type="submit" class="btn btn-primary" ng-click="userCtrl.login()">登录</button>
+            <button type="reset" class="btn btn-default" ng-click="userCtrl.reset()">重置</button>
+        </section>
+    </form>
+</div>
