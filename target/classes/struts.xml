@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+    <!-- 请求参数的编码方式 -->
+    <constant name="struts.i18n.encoding" value="utf-8" />
+    <!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
+    <constant name="struts.i18n.reload" value="true" />
+
+    <package name="basePackage" extends="struts-default" namespace="/action">
+        <global-results>
+            <result name="success" type="stream">
+                <param name="inputStream">inputStream</param>
+            </result>
+        </global-results>
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        <action name="leave_*" method="{1}" class="leaveAction" />
+        <action name="user_*" method="{1}" class="userAction" />
+    </package>
+</struts>
