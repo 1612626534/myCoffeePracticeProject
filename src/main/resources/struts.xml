@@ -17,6 +17,8 @@
         <global-allowed-methods>regex:.*</global-allowed-methods>
 
         <action name="leave_*" method="{1}" class="leaveAction" />
-        <action name="user_*" method="{1}" class="userAction" />
+        <action name="user_*" method="{1}" class="userAction">
+            <result name="input"></result>
+        </action>
     </package>
 </struts>

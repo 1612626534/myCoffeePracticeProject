@@ -1,0 +1,34 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.container {
+    .position(absolute, 0px, 0px,0px, 0px);
+    .top-navigation {
+        padding-left: 15px;
+        background-color: #3b4452;
+    }
+    .main {
+        flex: 1;
+        border: 1px solid palegoldenrod;
+    }
+}
+
+.position(@name, @top, @right, @bottom, @left) {
+    position: @name;
+    top: @top;
+    right: @right;
+    bottom: @bottom;
+    left: @left;
+}
+
+.inline-block {
+    display: inline-block;
+}

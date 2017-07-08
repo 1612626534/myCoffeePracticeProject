@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="login">
+<head>
+    <meta charset="UTF-8">
+    <title>This is hom page.</title>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="lib/angular-material/angular-material.min.css" />
+
+    <!--lib-->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-aria/angular-aria.min.js"></script>
+    <script src="lib/angular/angular-animate.min.js"></script>
+    <script src="lib/angular-material/angular-material.min.js"></script>
+
+    <script src="js/loginController.js"></script>
+
+    <style>
+        .coffee-login-form {
+            width: 30%;
+        }
+    </style>
+
+</head>
+
+<body layout-gt-sm="column" layout-align-gt-sm="center center">
+    <div ng-controller="loginController" class="coffee-login-form">
+        <form name="loginForm" layout-gt-sm="column">
+            <md-input-container>
+                <input id="email" type="email" name="email" placeholder="请输入邮箱地址" ng-model="userInfo.email" md-no-asterisk required>
+            </md-input-container>
+            <md-input-container>
+                <input name="password" placeholder="请输密码" id="password" type="password" ng-model="userInfo.password" md-no-asterisk required>
+            </md-input-container>
+            <section>
+                <md-button  class="md-accent md-raised" ng-click="login()">登录</md-button>
+                <md-button ng-click="reset()">重置</md-button>
+            </section>
+        </form>
+    </div>
+</body>
+</html>
