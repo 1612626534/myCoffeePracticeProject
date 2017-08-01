@@ -1,29 +1,28 @@
 package com.practice.service.user;
 
-import org.activiti.engine.IdentityService;
-import org.activiti.engine.impl.persistence.entity.UserEntity;
+import com.practice.bean.UserPO;
+import com.practice.dao.user.IUserDAO;
+import com.practice.utils.UserUtils;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 public class UserServiceImpl implements UserService {
 
-    private IdentityService identityService;
+    @Autowired
+    private SqlSessionFactory sqlSessionFactory;
 
-    public UserEntity getUser(String email, String password) throws NullPointerException{
-        UserEntity userEntity = (UserEntity) identityService.createUserQuery().userEmail(email).singleResult();
-        boolean isPasswordParameterEmpty = StringUtils.isEmpty(password);
-        boolean isPasswordEmpty = StringUtils.isEmpty(userEntity.getPassword());
-        boolean isPasswordRight = !isPasswordParameterEmpty && !isPasswordEmpty && password.equals(userEntity.getPassword());
-        if (!isPasswordRight) {
+    public UserPO getUser(String email, String password) throws NullPointerException{
+        SqlSession session = this.sqlSessionFactory.openSession();
+        UserPO user = session.getMapper(IUserDAO.class).getUserByEmail(email);
+        if (!UserUtils.isPasswordRight(password, user)) {
             throw new NullPointerException("user " + email +" is not exist");
         }
-        return userEntity;
+        return user;
     }
 
-    public IdentityService getIdentityService() {
-        return identityService;
-    }
-
-    public void setIdentityService(IdentityService identityService) {
-        this.identityService = identityService;
+    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
     }
 }

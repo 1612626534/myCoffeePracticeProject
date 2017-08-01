@@ -8,7 +8,7 @@ loginModule.controller('loginController', ['$scope','$http', function ($scope, $
     $scope.userInfo = {username: "", password: ""};
 
     $scope.login = function() {
-        var loginActionName = "action/user_login.action";
+        var loginActionName = "user_login.action";
         var data = {
             email: $scope.userInfo.email,
             password: $scope.userInfo.password

@@ -1,15 +1,18 @@
-package com.practice.action.user;
+package com.practice.action.user
+        ;
 
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.practice.bean.UserPO;
 import com.practice.common.CoffeeMessage;
 import com.practice.common.Constants;
 import com.practice.service.user.UserService;
 import org.activiti.engine.impl.persistence.entity.UserEntity;
-import org.activiti.engine.impl.persistence.entity.UserEntityImpl;
-import org.apache.log4j.Logger;
+
 import org.apache.struts2.ServletActionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpSession;
@@ -19,12 +22,12 @@ import java.io.InputStream;
 /**
  * This class is used to read user info.
  */
-public class UserAction extends ActionSupport implements ModelDriven<UserEntityImpl> {
+public class UserAction extends ActionSupport implements ModelDriven<UserPO> {
 
-    private UserEntityImpl userEntity = new UserEntityImpl();
+    private UserPO userEntity = new UserPO();
     private InputStream inputStream;
     private UserService userService;
-    private Logger logger = Logger.getLogger(UserAction.class);
+    private Logger logger = LoggerFactory.getLogger(UserAction.class);
 
     public String login() {
         UserEntity currentUser = null;
@@ -36,7 +39,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserEntityI
                 addCurrentUserToSession(currentUser);
                 logger.info("current user info: " + currentUser.getEmail());
             } catch (NullPointerException e) {
-                this.inputStream = convertObjectToStream(new CoffeeMessage(LOGIN, "Email/Password is incorrect."));
+                this.inputStream = convertObjectToStream(new CoffeeMessage(LOGIN, "Email/Password is inco" + this.userEntity.getEmail() + "312312" + this.userEntity.getPassword()));
             }
         }
         return currentUser == null ? LOGIN : SUCCESS;
@@ -69,7 +72,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserEntityI
         this.inputStream = inputStream;
     }
 
-    public UserEntityImpl getModel() {
+    public UserPO getModel() {
         return this.userEntity;
     }
 

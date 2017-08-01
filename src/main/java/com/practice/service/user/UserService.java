@@ -1,9 +1,10 @@
 package com.practice.service.user;
 
 
+import com.practice.bean.UserPO;
 import org.activiti.engine.impl.persistence.entity.UserEntity;
 
 public interface UserService {
 
-    public UserEntity getUser(String email, String password) throws NullPointerException;
+    public UserPO getUser(String email, String password) throws NullPointerException;
 }
