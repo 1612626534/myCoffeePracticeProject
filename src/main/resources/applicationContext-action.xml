@@ -11,7 +11,9 @@
                         http://www.springframework.org/schema/mvc
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-    <bean id="leaveAction" class="com.practice.action.leave.LeaveAction"></bean>
-    <bean id="userAction" class="com.practice.action.user.UserAction"></bean>
+    <bean id="leaveAction" class="com.action.leave.LeaveAction"></bean>
+    <bean id="userAction" class="com.action.user.UserAction">
+        <property name="userService" ref="userService"/>
+    </bean>
 
 </beans>

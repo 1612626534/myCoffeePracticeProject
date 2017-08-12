@@ -19,6 +19,15 @@
     </listener>
 
     <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>com.filter.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>

@@ -1,29 +1,21 @@
-/**
- * Created by Administrator on 2017/6/15 0015.
- */
-var loginModule = angular.module('login', ['ngMaterial', 'ngAnimate']);
+$(function() {
+    $("button").click(function() {
+        var params = {};
+        params.email = $("input[name=email]").val();
+        params.password = $("input[name=password]").val();
 
-
-loginModule.controller('loginController', ['$scope','$http', function ($scope, $http) {
-    $scope.userInfo = {username: "", password: ""};
-
-    $scope.login = function() {
-        var loginActionName = "user_login.action";
-        var data = {
-            email: $scope.userInfo.email,
-            password: $scope.userInfo.password
-        };
-
-        var promise = $http.post(loginActionName, data);
-
-        if (promise) {
-            promise.then(function(data) {
-                alert(data);
-            });
-        }
-    };
-
-    $scope.reset = function() {
-        $scope.userInfo = {};
-    };
-}])
+        $.ajax({
+            url: "user_login.action",
+            method: "post",
+            data: params,
+            success: function(data) {
+                var responseValue = JSON.parse(data);
+                if (responseValue.status === "success") {
+                    location.href = "/coffee-1.0/index.html";
+                } else {
+                    $("#message").html(responseValue.message);
+                }
+            }
+        });
+    });
+});
