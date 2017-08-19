@@ -8,15 +8,6 @@ postal
 jquery
 
 
-
-
-//Tasks
-1, 自定义栅格系统
-2, 自定义flex布局常用css
-3, 自定义media query集合
-
-
-
 1. login module
  # code login feature basically. (DONE)
  # improve login feature by redesigning the login ui with bootstrap. (TO DO)
