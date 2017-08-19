@@ -1,0 +1,16 @@
+
+
+
+angularjs
+angular material
+lodash
+postal
+jquery
+
+
+1. login module
+ # code login feature basically. (DONE)
+ # improve login feature by redesigning the login ui with bootstrap. (TO DO)
+ # improve login feature by using the encrypt (TO DO)
+ # improve login feature by using the Spring Security (In Progress)
+ # improve login feature by recoding the login logic with filter. (TO DO)
