@@ -2,12 +2,11 @@ package com.action.user;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.bean.UserPO;
+import com.bean.user.UserPO;
 import com.common.CoffeeMessage;
 import com.common.Constants;
 import com.service.user.UserService;
 import com.utils.IOUtils;
-import org.activiti.engine.impl.persistence.entity.UserEntity;
 
 import org.apache.struts2.ServletActionContext;
 import org.slf4j.Logger;
@@ -23,7 +22,7 @@ import java.io.InputStream;
  */
 public class UserAction extends ActionSupport implements ModelDriven<UserPO> {
 
-    private UserPO userEntity = new UserPO();
+    private UserPO userPO = new UserPO();
     private InputStream inputStream;
 
     @Autowired
@@ -34,25 +33,25 @@ public class UserAction extends ActionSupport implements ModelDriven<UserPO> {
         logger.info("login");
 
         try {
-            UserPO currentUser = this.userService.getUser(this.userEntity.getEmail(), this.userEntity.getPassword());
+            UserPO currentUser = this.userService.getUser(this.userPO.getEmail(), this.userPO.getPassword());
             addCurrentUserToSession(currentUser);
             this.inputStream = IOUtils.convertObjectToStream(new CoffeeMessage(SUCCESS, "Permission accepted by coffee"));
-            logger.info(this.userEntity.getEmail() + "login successfully.");
+            logger.info(this.userPO.getEmail() + "login smvnuccessfully.");
         } catch (NullPointerException e) {
             this.inputStream = IOUtils.convertObjectToStream(new CoffeeMessage(LOGIN, "Email/Password is incorrect"));
-            logger.info(this.userEntity.getEmail() + "login failed.");
+            logger.info(this.userPO.getEmail() + "login failed.");
         }
 
         return SUCCESS;
     }
 
-    private void addCurrentUserToSession(UserEntity currentUser) {
+    private void addCurrentUserToSession(UserPO currentUser) {
         HttpSession session = ServletActionContext.getRequest().getSession();
         session.setAttribute(Constants.CURRENT_USER, currentUser);
     }
 
     public void setUserEntity(UserPO userEntity) {
-        this.userEntity = userEntity;
+        this.userPO = userEntity;
     }
 
     public InputStream getInputStream() {
@@ -64,7 +63,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserPO> {
     }
 
     public UserPO getModel() {
-        return this.userEntity;
+        return this.userPO;
     }
 
     public UserService getUserService() {

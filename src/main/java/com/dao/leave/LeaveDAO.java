@@ -1,6 +1,6 @@
 package com.dao.leave;
 
-import com.bean.LeavePO;
+import com.bean.leave.LeavePO;
 import org.apache.ibatis.annotations.Param;
 
 public interface LeaveDAO {

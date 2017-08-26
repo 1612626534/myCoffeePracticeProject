@@ -1,6 +1,6 @@
 package com.filter;
 
-import com.bean.UserPO;
+import com.bean.user.UserPO;
 import com.common.Constants;
 
 import javax.servlet.*;

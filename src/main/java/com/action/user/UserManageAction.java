@@ -1,7 +1,6 @@
 package com.action.user;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.bean.UserPO;
 import org.activiti.engine.impl.persistence.entity.UserEntityImpl;
 
 /**

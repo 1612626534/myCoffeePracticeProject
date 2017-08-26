@@ -1,6 +1,6 @@
 package com.utils;
 
-import com.bean.UserPO;
+import com.bean.user.UserPO;
 import org.springframework.util.StringUtils;
 
 public class UserUtils {

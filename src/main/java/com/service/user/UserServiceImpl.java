@@ -1,6 +1,6 @@
 package com.service.user;
 
-import com.bean.UserPO;
+import com.bean.user.UserPO;
 import com.dao.user.IUserDAO;
 import com.utils.UserUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -8,9 +8,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     @Autowired
@@ -26,6 +28,11 @@ public class UserServiceImpl implements UserService {
             throw new NullPointerException("user " + email +" is not exist");
         }
         return user;
+    }
+
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        SqlSession session = this.sqlSessionFactory.openSession();
+        return session.getMapper(IUserDAO.class).getUserByName(userName);
     }
 
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {

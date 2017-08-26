@@ -1,7 +1,7 @@
 package com.service.user;
 
 import com.action.user.UserAction;
-import com.bean.UserPO;
+import com.bean.user.UserPO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

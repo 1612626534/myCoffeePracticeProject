@@ -1,7 +1,7 @@
 package com.action.leave;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.bean.LeavePO;
+import com.bean.leave.LeavePO;
 
 /**
  * Thi class is used to manage leave info, include /create/update/delete.

@@ -1,6 +1,6 @@
 package com.dto.leave;
 
-import com.bean.LeavePO;
+import com.bean.leave.LeavePO;
 import java.io.Serializable;
 
 public class LeaveDTO implements Serializable{

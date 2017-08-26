@@ -2,9 +2,8 @@ package com.action.leave;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.bean.LeavePO;
+import com.bean.leave.LeavePO;
 import org.activiti.engine.ProcessEngineConfiguration;
-import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.io.*;
 
