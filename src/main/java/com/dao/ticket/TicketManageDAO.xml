@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.ticket.ITicketManageDAO">
+
+    <resultMap id="ticketPO" type="com.bean.ticket.TicketPO">
+        <id column="TICKET_ID" />
+        <result column="TICKET_TITLE" property="title" />
+        <result column="TICKET_STATUS" property="status" typeHandler="com.handler.LocalEnumTypeHandler"/>
+        <result column="TICKET_DESCRIPTION" property="description" />
+        <result column="TICKET_CREATED_DATE" property="createdDate" />
+        <result column="TICKET_MODIFIED_DATE" property="modifiedDate" />
+        <association column="ASSIGNEE_ID" property="assignee" resultMap="com.dao.user.IUserDAO.userProfile" columnPrefix="ASSIGNEE_"/>
+        <association column="CREATOR_ID" property="creator" resultMap="com.dao.user.IUserDAO.userProfile" columnPrefix="CREATOR_"/>
+    </resultMap>
+
+    <select id="getAllMyTickets" resultMap="ticketPO">
+        SELECT
+            ticket.ID                                   AS TICKET_ID,
+            ticket.TITLE                                AS TICKET_TITLE,
+            ticket.STATUS                               AS TICKET_STATUS,
+            ticket.DESCRIPTION                          AS TICKET_DESCRIPTION,
+            ticket.CREATED_DATE                         AS TICKET_CREATED_DATE,
+            ticket.MODIFIED_DATE                        AS TICKET_MODIFIED_DATE,
+            assignee.ID                                 AS ASSIGN_USER_ID,
+            assignee.EMAIL                              AS ASSIGNEE_EMAIL,
+            assignee.`NAME`                             AS ASSIGN_USER_NAME,
+            creator.ID                                  AS CREATOR_USER_ID,
+            creator.EMAIL                               AS CREATOR_EMAIL,
+            creator.`NAME`                              AS CREATOR_USER_NAME
+        FROM ticket
+            JOIN user_profile as assignee ON ticket.ASSIGNEE_ID = assignee.ID
+            JOIN user_profile as creator ON ticket.CREATOR_ID = creator.ID
+        WHERE
+            ticket.ASSIGNEE_ID = #{assigneeId}
+
+    </select>
+
+
+    <insert id="createTicket">
+        INSERT INTO
+            ticket(TITLE, ASSIGNEE_ID, CREATOR_ID, STATUS, DESCRIPTION, CREATED_DATE, MODIFIED_DATE)
+        VALUES
+            (#{ticket.title}, #{ticket.assignee.id}, #{ticket.creator.id}, #{ticket.status.code}, #{ticket.description}, #{ticket.createdDate}, #{ticket.modifiedDate})
+    </insert>
+
+    <delete id="deleteTicket">
+            DELETE FROM ticket WHERE id = #{ticketId}
+    </delete>
+
+    <update id="updateTicket">
+        UPDATE
+            ticket
+        SET
+            ticket.TITLE = #{ticket.title},
+            ticket.ASSIGNEE_ID = #{ticket.assignee.id},
+            ticket.CREATOR_ID = #{ticket.creator.id},
+            ticket.STATUS = #{ticket.status.code},
+            ticket.DESCRIPTION = #{ticket.description},
+            ticket.CREATED_DATE = #{ticket.createdDate},
+            ticket.MODIFIED_DATE = #{ticket.modifiedDate}
+    </update>
+
+</mapper>

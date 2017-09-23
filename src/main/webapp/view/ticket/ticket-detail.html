@@ -1,0 +1,27 @@
+<div class="ticket-detail-container">
+    <h3 contenteditable="true" class="header" ng-bind="ticketDetailCtrl.ticket.name"></h3>
+    <div class="divide-line"></div>
+    <section class="ticket-info">
+        <div>
+            <label for="author"><strong>Creator :</strong></label>
+            <span id="author" ng-bind="ticketDetailCtrl.ticket.authorName"></span>
+        </div>
+        <div>
+            <label for="createdDate"><strong>Create Date :</strong></label>
+            <span id="createdDate" ng-bind="ticketDetailCtrl.ticket.createdDate"></span>
+        </div>
+        <div>
+            <label for="lastModifiedDate"><strong>Modified Date :</strong></label>
+            <span id="lastModifiedDate" ng-bind="ticketDetailCtrl.ticket.lastModifiedDate"></span>
+        </div>
+        <div>
+            <label for="status"><strong>Status :</strong></label>
+            <span id="status" ng-bind="ticketDetailCtrl.ticket.status"></span>
+        </div>
+        <div>
+            <label for="description"><strong>Description:</strong></label>
+            <div id="description" contenteditable="true" ng-bind="ticketDetailCtrl.ticket.description"></div>
+        </div>
+    </section>
+    <div class="divide-line"></div>
+</div>

@@ -1,0 +1,35 @@
+<md-dialog class="ticket-create" layout="column" layout-align="center">
+    <div md-dialog-title class="title">Create a new ticket</div>
+    <md-dialog-content class="ticket-content">
+        <md-list id="create-field" layout="column" layout-align="center end">
+            <md-list-item class="item">
+                <label for="ticketName">Ticket Name</label>
+                <input type="text" name="ticketName" md-auto-focus="true" id="ticketName"/>
+            </md-list-item>
+            <md-list-item class="item">
+                <label for="ticketAssignee">Ticket Assignees</label>
+                <input type="text" name="ticketAssignee" id="ticketAssignee"/>
+            </md-list-item>
+            <md-list-item class="item">
+                <label for="ticketStatus">status</label>
+                <input type="text" name="ticketStatus" id="ticketStatus" />
+            </md-list-item>
+            <md-list-item class="item">
+                <label for="ticketCreatedDate">Created Date</label>
+                <input type="text" name="ticketCreatedDate" id="ticketCreatedDate" />
+            </md-list-item>
+            <md-list-item class="item">
+                <label for="ticketModifiedDate">Modified Date</label>
+                <input type="text" name="ticketCreatedDate" id="ticketModifiedDate" />
+            </md-list-item>
+            <md-list-item class="item">
+                <label>Description</label>
+                <textarea id="ticketDescription" name="ticketDescription"></textarea>
+            </md-list-item>
+        </md-list>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-raised md-primary" md-auto-focus="true">Create</md-button>
+        <md-button ng-click="closePopover()">Cancel</md-button>
+    </md-dialog-actions>
+</md-dialog>

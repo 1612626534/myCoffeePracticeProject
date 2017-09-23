@@ -1,0 +1,13 @@
+<div class="tickets-container" layout-gt-md="column" layout-align-gt-md="start start">
+    <h3 class="create-ticket-link" ng-click="ticketCtrl.createTicket()">Create a new ticket</h3>
+    <h3 class="create-ticket-link" ng-click="ticketCtrl.createTicket()">Query My Tickets</h3>
+    <h3 class="create-ticket-link" ng-click="ticketCtrl.createTicket()">Query All Tickets</h3>
+    <h3 class="create-ticket-link" ng-click="ticketCtrl.createTicket()">Create a new ticket</h3>
+    <h3>My Ticket</h3>
+    <ul class="ticket-list" layout-gt-md="column" layout-align-gt-md="start center">
+        <li ng-repeat="ticket in ticketCtrl.tickets" layout-gt-md="row" layout-align-gt-md="start center">
+            <span class="badge">{{ticket.id}}</span>
+            <span class="text selected">{{ticket.name}}</span>
+        </li>
+    </ul>
+</div>
