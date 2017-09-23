@@ -1,2 +1,4 @@
-com\dao\user\UserDAOTest.class
+com\dao\user\TestUserDAO.class
+com\dao\TestBasicDAO.class
+com\dao\ticket\TestTicketDAO.class
 com\service\user\UserServiceTest.class

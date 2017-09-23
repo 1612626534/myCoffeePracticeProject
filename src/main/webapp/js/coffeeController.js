@@ -16,7 +16,7 @@
 *
 */
 
-var coffeeModule = angular.module("coffee", ["ngRoute", "ngMaterial", "ngAnimate"]);
+var coffeeModule = angular.module("coffee", ["ngRoute", "ngMaterial", "ngAnimate", "ticketModule"]);
 
 
 

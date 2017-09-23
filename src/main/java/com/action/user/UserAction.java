@@ -35,8 +35,8 @@ public class UserAction extends ActionSupport implements ModelDriven<UserPO> {
         try {
             UserPO currentUser = this.userService.getUser(this.userPO.getEmail(), this.userPO.getPassword());
             addCurrentUserToSession(currentUser);
-            this.inputStream = IOUtils.convertObjectToStream(new CoffeeMessage(SUCCESS, "Permission accepted by coffee"));
-            logger.info(this.userPO.getEmail() + "login smvnuccessfully.");
+            this.inputStream = IOUtils.convertObjectToStream(new CoffeeMessage(SUCCESS, "PermissionPO accepted by coffee"));
+            logger.info(this.userPO.getEmail() + "login successfully.");
         } catch (NullPointerException e) {
             this.inputStream = IOUtils.convertObjectToStream(new CoffeeMessage(LOGIN, "Email/Password is incorrect"));
             logger.info(this.userPO.getEmail() + "login failed.");

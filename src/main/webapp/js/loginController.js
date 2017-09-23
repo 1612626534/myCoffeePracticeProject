@@ -9,12 +9,13 @@ $(function() {
             method: "post",
             data: params,
             success: function(data) {
-                var responseValue = JSON.parse(data);
-                if (responseValue.status === "success") {
-                    location.href = "/coffee-1.0/index.html";
-                } else {
+                try {
+                    var responseValue = JSON.parse(data);
                     $("#message").html(responseValue.message);
+                } catch(e) {
+                    location.href = "/coffee-1.0/index.html";
                 }
+
             }
         });
     });

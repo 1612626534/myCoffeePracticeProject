@@ -2,15 +2,15 @@ package com.bean.user;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public class Permission implements GrantedAuthority {
-    private int id;
+public class PermissionPO implements GrantedAuthority {
+    private String id;
     private String name;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -33,12 +33,12 @@ public class Permission implements GrantedAuthority {
             return true;
         }
 
-        if (!(o instanceof Permission)) {
+        if (!(o instanceof PermissionPO)) {
             return false;
         }
 
-        Permission that = (Permission) o;
+        PermissionPO that = (PermissionPO) o;
 
-        return this.id == that.id;
+        return this.id.equals(that.id);
     }
 }

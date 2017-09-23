@@ -7,5 +7,4 @@ public interface IUserDAO {
 
     UserPO getUserByEmail(@Param("email") String email);
 
-    UserPO getUserByName(@Param("userName") String userName);
 }

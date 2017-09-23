@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>This is hom page.</title>
+    <base href="coffee-1.0">
 
     <!--css-->
     <link rel="stylesheet" type="text/css" href="lib/angular-material/angular-material.min.css" />
@@ -29,6 +30,8 @@
     <script src="js/coffeeUtils.js"></script>
     <script src="js/browserStorage.js"></script>
     <script src="js/coffeeCache.js"></script>
+    <script src="js/ticket/ticketController.js"></script>
+    <script src="js/ticket/ticketDirective.js"></script>
 
     <!--module-->
 
@@ -37,14 +40,15 @@
     <div id="container" class="container" layout="column">
         <md-toolbar layout="row" layout-align="start center" class="top-navigation">
             <h4>Angular Material - Coffee</h4>
+            <h4 class="item">Ticket</h4>
         </md-toolbar>
         <div layout="row" layout-align="start stretch" class="main">
             <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
-                <!--TODO-->
-
-
+                <ticket-left-nav></ticket-left-nav>
             </md-sidenav>
-            <md-content id="content" flex></md-content>
+            <md-content id="content" flex>
+                <ticket-list></ticket-list>
+            </md-content>
         </div>
     </div>
 </body>

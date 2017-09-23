@@ -16,4 +16,8 @@
         <property name="userService" ref="userService"/>
     </bean>
 
+    <bean id="ticketAction" class="com.action.ticket.TicketAction">
+        <property name="ticketService" ref="ticketService" />
+    </bean>
+
 </beans>

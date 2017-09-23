@@ -14,13 +14,118 @@ body {
   left: 0px;
 }
 .container .top-navigation {
+  height: 60px;
+  line-height: 60px;
   padding-left: 15px;
   background-color: #3b4452;
 }
+.container .top-navigation h4:nth-child(1) {
+  margin-right: 80px;
+}
+.container .top-navigation .item {
+  height: 100%;
+  padding: 0px 30px;
+}
+.container .top-navigation .item:hover {
+  background: #ffffff;
+  color: #3b4452;
+  cursor: pointer;
+}
 .container .main {
   flex: 1;
-  border: 1px solid palegoldenrod;
+}
+.container .main .tickets-container {
+  margin: 16px;
+}
+.container .main .tickets-container h3 {
+  margin: 10px 0px;
+}
+.container .main .tickets-container .create-ticket-link {
+  color: darkslategray;
+  cursor: pointer;
+}
+.container .main .tickets-container .create-ticket-link:hover {
+  color: cornflowerblue;
+}
+.container .main .tickets-container .ticket-list li {
+  margin-top: 5px;
+  text-align: center;
+  padding: 0px;
+  height: 30px;
+  line-height: 30px;
+  box-sizing: content-box;
+}
+.container .main .tickets-container .ticket-list li .text {
+  border: 1px solid #BBD8DC;
+  border-left: 0px;
+  display: inline-block;
+  width: 250px;
+  border-radius: 0px 4px 4px 0px;
+  height: 30px;
+  background-color: #EEEEEE;
+}
+.container .main .tickets-container .ticket-list li .selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+  cursor: pointer;
+}
+.container .main .tickets-container .ticket-list li .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  height: 30px;
+  background-color: #607D8B;
+  border-radius: 4px 0 0 4px;
+  width: 30px;
+}
+.container .main .ticket-detail-container {
+  max-width: 65%;
+  padding: 10px 26px;
+}
+.container .main .ticket-detail-container .header {
+  padding-left: 5px;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+.container .main .ticket-detail-container .ticket-info {
+  margin: 20px 0px;
+}
+.container .main .ticket-detail-container .ticket-info div {
+  margin-top: 10px;
+}
+.container .main .ticket-detail-container .ticket-info #description {
+  padding: 10px;
+}
+.ticket-create {
+  width: 600px;
+  height: 850px;
+  padding: 10px 30px;
+}
+.ticket-create .ticket-content {
+  height: 500px;
+  width: 100%;
+  margin: 10px 0px;
+}
+.ticket-create .title {
+  font-size: 26px;
+}
+.ticket-create textarea,
+.ticket-create input {
+  width: 300px;
+  height: 30px;
+  border: 1px solid #CCCCCC;
+  border-radius: 2px;
+  margin-left: 30px;
+}
+.ticket-create textarea {
+  resize: none;
+  min-height: 150px;
 }
 .inline-block {
   display: inline-block;
+}
+.divide-line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #CCCCCC;
 }

@@ -30,9 +30,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return user;
     }
 
+    @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        logger.info("username: " + userName);
         SqlSession session = this.sqlSessionFactory.openSession();
-        return session.getMapper(IUserDAO.class).getUserByName(userName);
+        UserPO  user = session.getMapper(IUserDAO.class).getUserByEmail(userName);
+        logger.info("user:" + user);
+        return user == null ? new UserPO() : user;
     }
 
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {

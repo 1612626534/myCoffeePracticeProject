@@ -1,27 +1,31 @@
 package com.bean.user;
 
-import org.activiti.engine.impl.persistence.entity.UserEntityImpl;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 /*
 *   This class is used to extends the user basic info.
 * */
 public class UserPO implements UserDetails {
 
-    private String userName;
+    private String id;
+    private String name;
     private String password;
     private String email;
     private boolean isAccountNonExpired;
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
-    private Role role = new Role();
+    private RolePO role = new RolePO();
+    private Date modifiedDate;
 
+    @Override
     public String getUsername() {
-        return this.userName;
+        return this.email;
     }
 
     public boolean isAccountNonExpired() {
@@ -40,11 +44,11 @@ public class UserPO implements UserDetails {
         return this.isEnabled;
     }
 
-    public Role getRole() {
+    public RolePO getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(RolePO role) {
         this.role = role;
     }
 
@@ -54,20 +58,30 @@ public class UserPO implements UserDetails {
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.role.getPermissionList();
+        ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+        grantedAuthorities.add(this.getRole());
+        return grantedAuthorities;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setPassword(String password) {
@@ -96,5 +110,28 @@ public class UserPO implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserPO)) return false;
+
+        UserPO userPO = (UserPO) o;
+
+        return id.equals(userPO.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

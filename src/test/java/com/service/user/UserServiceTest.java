@@ -17,17 +17,6 @@ public class UserServiceTest {
     public void getSqlSessionFactory() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         this.userService = (UserService) applicationContext.getBean("userService");
-        this.userAction = (UserAction) applicationContext.getBean("userAction");
-    }
-
-//    @Test
-    public void loginMethodTest() {
-        UserPO userPO = new UserPO();
-        userPO.setEmail("caesar@dev.local.xx");
-        userPO.setPassword("Newpark0521");
-
-        this.userAction.setUserEntity(userPO);
-        this.userAction.login();
     }
 
     @Test
